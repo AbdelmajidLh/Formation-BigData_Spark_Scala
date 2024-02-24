@@ -41,7 +41,7 @@ Voici les instructions pour installer Hadoop 3.3 sur Ubuntu 22.04.3 - LTS.
 
 8. Déplacer Hadoop vers le répertoire /usr/local :
    ```bash
-   mv hadoop-3.3.5 /usr/local/hadoop
+   sudo mv hadoop-3.3.5 /usr/local/hadoop
    ```
 
 9. Mettre à jour les alternatives Java :
@@ -56,14 +56,34 @@ Voici les instructions pour installer Hadoop 3.3 sur Ubuntu 22.04.3 - LTS.
    /usr/lib/jvm/java-7-openjdk-amd64/jre/bin/java Nothing to configure.
    ```
 
+10. Ouvrir le fichier ~/.bashrc avec l'éditeur de texte nano :
+    ```bash
+    nano ~/.bashrc
+    ```
+    Copier et coller les éléments suivants dans le fichier et remplacer la ligne rouge par la ligne verte si elles ne sont pas identiques :
+
+    ```bash
+    #HADOOP VARIABLES START
+    export JAVA_HOME=/usr/lib/jvm/java-7-openjdk-amd64
+    export HADOOP_INSTALL=/usr/local/hadoop
+    export PATH=$PATH:$HADOOP_INSTALL/bin
+    export PATH=$PATH:$HADOOP_INSTALL/sbin
+    export HADOOP_MAPRED_HOME=$HADOOP_INSTALL
+    export HADOOP_COMMON_HOME=$HADOOP_INSTALL
+    export HADOOP_HDFS_HOME=$HADOOP_INSTALL
+    export YARN_HOME=$HADOOP_INSTALL
+    export HADOOP_COMMON_LIB_NATIVE_DIR=$HADOOP_INSTALL/lib/native
+    export HADOOP_OPTS="-Djava.library.path=$HADOOP_INSTALL/lib"
+    #HADOOP VARIABLES END
+    ```
+   
+Une fois que vous avez copié les éléments dans le fichier, vous pouvez enregistrer et quitter l'éditeur nano (généralement en appuyant sur Ctrl + X, puis en répondant "O" pour enregistrer les modifications et en appuyant sur Entrée).
 
 
 
-9) # update-alternatives --config java
-    (You will get below output)
-    root@hadoop:~# update-alternatives --config java
-    There is only one alternative in link group java (providing /usr/bin/java):
-    /usr/lib/jvm/java-7-openjdk-amd64/jre/bin/java Nothing to configure.
+
+
+
 
 10) # nano ~/.bashrc
     (Copy paste below things in the file and replace red line with green line if they are not same)
