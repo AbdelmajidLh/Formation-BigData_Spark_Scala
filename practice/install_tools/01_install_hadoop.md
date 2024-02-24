@@ -1,3 +1,4 @@
+# instructions to Install Hadoop 3.3. on Ubuntu Server 22.04.3 - LTS.
 Voici les instructions pour installer Hadoop 3.3 sur Ubuntu 22.04.3 - LTS.
 
 [Adapté de la source](https://gist.github.com/swanandM/2b31a9984cdb58af96ec417197350f32)
@@ -14,7 +15,7 @@ Voici les instructions pour installer Hadoop 3.3 sur Ubuntu 22.04.3 - LTS.
 
 3. Vérifier la version de Java :
    ```bash
-   java –version
+   java -version
    ```
 
 4. Générer une paire de clés SSH sans passphrase :
@@ -23,23 +24,41 @@ Voici les instructions pour installer Hadoop 3.3 sur Ubuntu 22.04.3 - LTS.
    ```
    (Appuyez sur Entrée après cette étape, ne spécifiez pas de nom de fichier)
 
+5. Ajouter la clé publique au fichier des clés autorisées :
+   ```bash
+   cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
+   ```
+
+6. Télécharger Hadoop 3.3.5 :
+   ```bash
+   wget http://mirrors.sonic.net/apache/hadoop/common/hadoop-3.3.5/hadoop-3.3.5.tar.gz
+   ```
+
+7. Extraire le fichier tar.gz :
+   ```bash
+   tar xvzf hadoop-3.3.5.tar.gz
+   ```
+
+8. Déplacer Hadoop vers le répertoire /usr/local :
+   ```bash
+   mv hadoop-3.3.5 /usr/local/hadoop
+   ```
+
+9. Mettre à jour les alternatives Java :
+   ```bash
+   update-alternatives --config java
+   ```
+   
+   Vous obtiendrez le résultat suivant :
+   ```
+   root@hadoop:~# update-alternatives --config java
+   There is only one alternative in link group java (providing /usr/bin/java):
+   /usr/lib/jvm/java-7-openjdk-amd64/jre/bin/java Nothing to configure.
+   ```
 
 
 
 
-# instructions to Install Hadoop 3.3. on Ubuntu Server 22.04.3 - LTS.
-[Adapted from source](https://gist.github.com/swanandM/2b31a9984cdb58af96ec417197350f32)
-
-1) (Execute all the commands as root user) #sudo apt-get update
-2) # apt-get install default-jdk
-3) # java –version (Type this command)
-4) # ssh-keygen -t rsa -P ''
-(Press enter after this don’t put the file name)
-
-5) # cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
-6) # wget http://mirrors.sonic.net/apache/hadoop/common/hadoop-2.6.0/hadoop-2.6.0.tar.gz
-7) # tar xvzf hadoop-2.6.0.tar.gz
-8) # mv hadoop-2.6.0 /usr/local/hadoop
 9) # update-alternatives --config java
     (You will get below output)
     root@hadoop:~# update-alternatives --config java
