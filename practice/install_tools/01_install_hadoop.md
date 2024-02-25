@@ -103,6 +103,62 @@ Une fois que vous avez copié les éléments dans le fichier, vous pouvez enregi
    
 Après avoir copié la ligne dans le fichier, enregistrez et quittez l'éditeur nano.
 
+14. Ouvrir le fichier core-site.xml avec l'éditeur de texte nano :
+    ```bash
+    nano core-site.xml
+    ```
+   
+    Entrez les lignes suivantes entre les balises `<configuration></configuration>` :
+    ```xml
+    <property>
+      <name>hadoop.tmp.dir</name>
+      <value>/app/hadoop/tmp</value>
+      <description>A base for other temporary directories.</description>
+    </property>
+    <property>
+      <name>fs.default.name</name>
+      <value>hdfs://localhost:54310</value>
+      <description>The name of the default file system. A URI whose
+      scheme and authority determine the FileSystem implementation. The
+      uri's scheme determines the config property (fs.SCHEME.impl) naming
+      the FileSystem implementation class. The uri's authority is used to
+      determine the host, port, etc. for a filesystem.</description>
+    </property>
+    ```
+
+15. Copiez le fichier mapred-site.xml.template dans mapred-site.xml [optionel] :
+    ```bash
+    cp /usr/local/hadoop/etc/hadoop/mapred-site.xml.template /usr/local/hadoop/etc/hadoop/mapred-site.xml
+    ```
+
+16. Ouvrez le fichier mapred-site.xml avec l'éditeur de texte nano :
+    ```bash
+    nano mapred-site.xml
+    ```
+   
+    Entrez les lignes suivantes entre les balises `<configuration></configuration>` :
+    ```xml
+    <property>
+      <name>mapred.job.tracker</name>
+      <value>localhost:54311</value>
+      <description>The host and port that the MapReduce job tracker runs
+      at. If "local", then jobs are run in-process as a single map
+      and reduce task.
+      </description>
+    </property>
+    ```
+   
+    (J'espère que vous êtes toujours dans le répertoire /usr/local/hadoop/etc/hadoop)
+
+17. Créez le répertoire pour le namenode HDFS :
+    ```bash
+    mkdir -p /usr/local/hadoop_store/hdfs/namenode
+    ```
+
+18. Créez le répertoire pour le datanode HDFS :
+    ```bash
+    mkdir -p /usr/local/hadoop_store/hdfs/datanode
+    ```
 
 
 
