@@ -152,12 +152,12 @@ Après avoir copié la ligne dans le fichier, enregistrez et quittez l'éditeur 
 
 17. Créez le répertoire pour le namenode HDFS :
     ```bash
-    mkdir -p /usr/local/hadoop_store/hdfs/namenode
+    sudo mkdir -p /usr/local/hadoop_store/hdfs/namenode
     ```
 
 18. Créez le répertoire pour le datanode HDFS :
     ```bash
-    mkdir -p /usr/local/hadoop_store/hdfs/datanode
+    sudo mkdir -p /usr/local/hadoop_store/hdfs/datanode
     ```
 
 
