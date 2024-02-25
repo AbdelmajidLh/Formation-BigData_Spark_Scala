@@ -161,43 +161,6 @@ Après avoir copié la ligne dans le fichier, enregistrez et quittez l'éditeur 
     ```
 
 
-
-
-14) # nano core-site.xml
-Open the file and enter the following in between the <configuration></configuration> tag
-      <property>
-      <name>hadoop.tmp.dir</name>
-      <value>/app/hadoop/tmp</value>
-      <description>A base for other temporary directories.</description>
-      </property>
-      <property>
-      <name>fs.default.name</name>
-      <value>hdfs://localhost:54310</value>
-      <description>The name of the default file system. A URI whose
-      scheme and authority determine the FileSystem implementation. The
-      uri's scheme determines the config property (fs.SCHEME.impl) naming
-      the FileSystem implementation class. The uri's authority is used to
-      determine the host, port, etc. for a filesystem.</description>
-      </property>
-
-15) Copy mapred-site.xml.template file to mapred-site.xml
-# cp /usr/local/hadoop/etc/hadoop/mapred-site.xml.template /usr/local/hadoop/etc/hadoop/mapred-site.xml
-
-16) # nano mapred-site.xml
-Open the file and enter the following in between the <configuration></configuration> tag
-      <property>
-      <name>mapred.job.tracker</name>
-      <value>localhost:54311</value>
-      <description>The host and port that the MapReduce job tracker runs
-      at. If "local", then jobs are run in-process as a single map
-      and reduce task.
-      </description>
-      </property>
-(I hope you are still this /usr/local/hadoop/etc/Hadoop directory)
-
-17) # mkdir -p /usr/local/hadoop_store/hdfs/namenode
-18) # mkdir -p /usr/local/hadoop_store/hdfs/datanode
-
 19) # nano hdfs-site.xml
 Open the file and enter the following in between the <configuration></configuration> tag
       <property>
