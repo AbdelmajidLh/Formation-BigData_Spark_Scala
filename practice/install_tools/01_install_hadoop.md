@@ -159,40 +159,69 @@ Après avoir copié la ligne dans le fichier, enregistrez et quittez l'éditeur 
     ```bash
     sudo mkdir -p /usr/local/hadoop_store/hdfs/datanode
     ```
+Voici les étapes supplémentaires ajoutées à votre document Markdown :
 
-
-19) # nano hdfs-site.xml
-Open the file and enter the following in between the <configuration></configuration> tag
-      <property>
+19. Ouvrir le fichier hdfs-site.xml avec l'éditeur de texte nano :
+    ```bash
+    nano hdfs-site.xml
+    ```
+   
+    Entrez les lignes suivantes entre les balises `<configuration></configuration>` :
+    ```xml
+    <property>
       <name>dfs.replication</name>
       <value>1</value>
       <description>Default block replication.
       The actual number of replications can be specified when the file is created.
       The default is used if replication is not specified in create time.
       </description>
-      </property>
-      <property>
+    </property>
+    <property>
       <name>dfs.namenode.name.dir</name>
       <value>file:/usr/local/hadoop_store/hdfs/namenode</value>
-      </property>
-      <property>
+    </property>
+    <property>
       <name>dfs.datanode.data.dir</name>
       <value>file:/usr/local/hadoop_store/hdfs/datanode</value>
-      </property>
+    </property>
+    ```
 
-20) # hdfs namenode -format
-(Do this only once, if this command is executed again after Hadoop has been used,
-it'll destroy all the data on the Hadoop file system. Sometimes this command do not work in 1st attempt. 
-So change the user and again change it back to ‘root’.)
+20. Formater le namenode HDFS :
+    ```bash
+    hdfs namenode -format
+    ```
 
-Below commands are to test the successful installation of Hadoop.
+    (Effectuez cette étape une seule fois. Si cette commande est exécutée à nouveau après que Hadoop a été utilisé, elle détruira toutes les données sur le système de fichiers Hadoop. Parfois, cette commande ne fonctionne pas au premier essai. Donc, changez l'utilisateur et changez-le à nouveau en 'root'.)
 
-21) # start-dfs.sh (Type YES both the time when asked)
-22) # start-yarn.sh
-23) # jps
-24) # netstat -plten | grep java
-25) # stop-all.sh
+Les commandes ci-dessous sont destinées à tester l'installation réussie de Hadoop.
 
-Reference Links ---
-1) https://www.digitalocean.com/community/tutorials/how-to-install-hadoop-on-ubuntu-13-10
-2) http://www.bogotobogo.com/Hadoop/BigData_hadoop_Install_on_ubuntu_single_node_cluster.php
+
+21. Démarrer les services HDFS :
+    ```bash
+    start-dfs.sh
+    ```
+   (Tapez OUI deux fois lorsqu'on vous le demande)
+
+22. Démarrer les services YARN :
+    ```bash
+    start-yarn.sh
+    ```
+
+23. Vérifier que tous les processus Java sont en cours d'exécution :
+    ```bash
+    jps
+    ```
+
+24. Vérifier les ports utilisés par les processus Java :
+    ```bash
+    netstat -plten | grep java
+    ```
+
+25. Arrêter tous les services Hadoop :
+    ```bash
+    stop-all.sh
+    ```
+
+Liens de référence:
+- [Installation de Hadoop sur Ubuntu 13.10 (DigitalOcean)](https://www.digitalocean.com/community/tutorials/how-to-install-hadoop-on-ubuntu-13-10)
+- [Installation d'Hadoop sur un cluster à nœud unique Ubuntu (bogotobogo)](http://www.bogotobogo.com/Hadoop/BigData_hadoop_Install_on_ubuntu_single_node_cluster.php)
