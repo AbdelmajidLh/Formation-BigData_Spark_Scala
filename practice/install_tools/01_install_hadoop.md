@@ -53,7 +53,7 @@ Voici les instructions pour installer Hadoop 3.3 sur Ubuntu 22.04.3 - LTS.
    ```
    root@hadoop:~# update-alternatives --config java
    There is only one alternative in link group java (providing /usr/bin/java):
-   /usr/lib/jvm/java-7-openjdk-amd64/jre/bin/java Nothing to configure.
+   /usr/lib/jvm/java-11-openjdk-amd64/bin/java Nothing to configure.
    ```
 
 10. Ouvrir le fichier ~/.bashrc avec l'éditeur de texte nano :
@@ -64,7 +64,7 @@ Voici les instructions pour installer Hadoop 3.3 sur Ubuntu 22.04.3 - LTS.
 
     ```bash
     #HADOOP VARIABLES START
-    export JAVA_HOME=/usr/lib/jvm/java-7-openjdk-amd64
+    export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
     export HADOOP_INSTALL=/usr/local/hadoop
     export PATH=$PATH:$HADOOP_INSTALL/bin
     export PATH=$PATH:$HADOOP_INSTALL/sbin
