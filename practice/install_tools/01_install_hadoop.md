@@ -79,36 +79,33 @@ Voici les instructions pour installer Hadoop 3.3 sur Ubuntu 22.04.3 - LTS.
    
 Une fois que vous avez copié les éléments dans le fichier, vous pouvez enregistrer et quitter l'éditeur nano (généralement en appuyant sur Ctrl + X, puis en répondant "O" pour enregistrer les modifications et en appuyant sur Entrée).
 
+11. Accédez au répertoire où se trouvent les fichiers de configuration Hadoop :
+    ```bash
+    cd /usr/local/hadoop/etc/hadoop
+    ```
+
+12. Liste des fichiers dans ce répertoire :
+    ```bash
+    ls -lt
+    ```
+
+    Vous verrez de nombreux fichiers ici.
+
+13. Ouvrez le fichier hadoop-env.sh avec l'éditeur de texte nano :
+    ```bash
+    nano hadoop-env.sh
+    ```
+   
+    Copiez et collez la ligne suivante à la fin du fichier ci-dessus et remplacez la ligne rouge par la ligne verte si elles ne sont pas identiques, comme nous l'avons fait précédemment :
+    ```bash
+    export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
+    ```
+   
+Après avoir copié la ligne dans le fichier, enregistrez et quittez l'éditeur nano.
 
 
 
 
-
-
-10) # nano ~/.bashrc
-    (Copy paste below things in the file and replace red line with green line if they are not same)
-
-      #HADOOP VARIABLES START
-      export JAVA_HOME=/usr/lib/jvm/java-7-openjdk-amd64
-      export HADOOP_INSTALL=/usr/local/hadoop
-      export PATH=$PATH:$HADOOP_INSTALL/bin
-      export PATH=$PATH:$HADOOP_INSTALL/sbin
-      export HADOOP_MAPRED_HOME=$HADOOP_INSTALL
-      export HADOOP_COMMON_HOME=$HADOOP_INSTALL
-      export HADOOP_HDFS_HOME=$HADOOP_INSTALL
-      export YARN_HOME=$HADOOP_INSTALL
-      export HADOOP_COMMON_LIB_NATIVE_DIR=$HADOOP_INSTALL/lib/native
-      export HADOOP_OPTS="-Djava.library.path=$HADOOP_INSTALL/lib"
-      #HADOOP VARIABLES END
-
-Now we need to edit some file. All the files are in below directory -
-11) # cd /usr/local/hadoop/etc/hadoop
-12) # ls
-You will see many files here ---
-
-13) # nano hadoop-env.sh
-Copy paste below line at the end of the above file. (Replace red line with green line if they are not same, just like we did above)
-export JAVA_HOME=/usr/lib/jvm/java-7-openjdk-amd64
 
 14) # nano core-site.xml
 Open the file and enter the following in between the <configuration></configuration> tag
