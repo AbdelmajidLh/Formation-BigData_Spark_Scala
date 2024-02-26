@@ -274,4 +274,4 @@ Les commandes ci-dessous sont destinées à tester l'installation réussie de Ha
 Liens de référence:
 - [Installation de Hadoop sur Ubuntu 13.10 (DigitalOcean)](https://www.digitalocean.com/community/tutorials/how-to-install-hadoop-on-ubuntu-13-10)
 - [Installation d'Hadoop sur un cluster à nœud unique Ubuntu (bogotobogo)](http://www.bogotobogo.com/Hadoop/BigData_hadoop_Install_on_ubuntu_single_node_cluster.php)
-- [Comment installer Hadoop avec une configuration étape par étape sur Linux Ubuntu]([http://www.bogotobogo.com/Hadoop/BigData_hadoop_Install_on_ubuntu_single_node_cluster.php](https://www.guru99.com/fr/how-to-install-hadoop.html)https://www.guru99.com/fr/how-to-install-hadoop.html)
+- [Comment installer Hadoop avec une configuration étape par étape sur Linux Ubuntu](https://www.guru99.com/fr/how-to-install-hadoop.html)
