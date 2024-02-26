@@ -282,9 +282,11 @@ Les commandes ci-dessous sont destinées à tester l'installation réussie de Ha
     # afficher le contenu du réprtoire
     hdfs dfs -ls /data/
     ```
-35. [optionnel] Vérifier les ports utilisés par les processus Java :
+35. Controle via votre navigateur
     ```bash
-    netstat -plten | grep java
+    # Le NameNode est accessible à localhost:9870
+    # Le DataNode est accessible à localhost:9864
+    # YARN est accessible à localhost:8088
     ```
 
 36. Arrêter les services Hadoop :
