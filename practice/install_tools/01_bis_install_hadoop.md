@@ -169,9 +169,30 @@ Après avoir copié la ligne dans le fichier, enregistrez et quittez l'éditeur 
     sudo chown -R hduser_:Hadoop_ /app/hadoop/tmp
     sudo chmod 750 /app/hadoop/tmp
     ```
-24. [optionel] Copiez le fichier `mapred-site.xml.template` dans mapred-site.xml  :
-    ```bash
-    cp /opt/hadoop-3.3.5/etc/hadoop/mapred-site.xml.template /opt/hadoop-3.3.5/etc/hadoop/mapred-site.xml
+24. Ouvrir le fichier `yarn-site.xml` avec l'éditeur de texte at ajoute ces lignes  :
+    ```xml
+    <configuration>
+      <property>
+         <name>yarn.nodemanager.aux-services</name>
+         <value>mapreduce_shuffle</value>
+      </property>
+      <property>
+         <name>yarn.nodemanager.aux-services.mapreduce.shuffle.class</name>
+         <value>org.apache.hadoop.mapred.ShuffleHandler</value>
+      </property>
+      <property>
+         <name>yarn.resourcemanager.hostname</name>
+         <value>127.0.0.1</value>
+      </property>
+      <property>
+         <name>yarn.acl.enable</name>
+         <value>0</value>
+      </property>
+      <property>
+         <name>yarn.nodemanager.env-whitelist</name>
+         <value>JAVA_HOME,HADOOP_COMMON_HOME,HADOOP_HDFS_HOME,HADOOP_CONF_DIR,CLASSPATH_PERPEND_DISTCACHE,HADOOP_YARN_HOME,HADOOP_MAPRED_HOME</value>
+      </property>
+   </configuration>
     ```
 25. Quitter le terminal et réouvrir (en mode root)
 26. Ouvrez le fichier mapred-site.xml avec l'éditeur de texte nano :
