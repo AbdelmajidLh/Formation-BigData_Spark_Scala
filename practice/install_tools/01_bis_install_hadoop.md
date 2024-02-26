@@ -196,18 +196,7 @@ Après avoir copié la ligne dans le fichier, enregistrez et quittez l'éditeur 
    
     (J'espère que vous êtes toujours dans le répertoire /opt/hadoop-3.3.5/etc/hadoop)
 
-27. Créez le répertoire pour le namenode HDFS :
-    ```bash
-    sudo mkdir -p /usr/local/hadoop_store/hdfs/namenode
-    ```
-
-20. Créez le répertoire pour le datanode HDFS :
-    ```bash
-    sudo mkdir -p /usr/local/hadoop_store/hdfs/datanode
-    ```
-Voici les étapes supplémentaires ajoutées à votre document Markdown :
-
-19. Ouvrir le fichier hdfs-site.xml avec l'éditeur de texte nano :
+27. Ouvrir le fichier hdfs-site.xml avec l'éditeur de texte nano :
     ```bash
     nano hdfs-site.xml
     ```
@@ -222,22 +211,31 @@ Voici les étapes supplémentaires ajoutées à votre document Markdown :
       The default is used if replication is not specified in create time.
       </description>
     </property>
-    <property>
+    <!--<property>
       <name>dfs.namenode.name.dir</name>
       <value>file:/usr/local/hadoop_store/hdfs/namenode</value>
-    </property>
+    </property>-->
     <property>
       <name>dfs.datanode.data.dir</name>
-      <value>file:/usr/local/hadoop_store/hdfs/datanode</value>
+      <value>/home/hduser_/hdfs</value>
     </property>
     ```
-
-20. Formater le namenode HDFS :
+28. Créez le répertoire spécifié dans le paramètre ci-dessus et lui donner les autorisations
     ```bash
-    hdfs namenode -format
+    sudo mkdir -p /home/hduser_/hdfs
+    sudo chown -R hduser_:hadoop_ /home/hduser_/hdfs
+    sudo chmod 750 /home/hduser_/hdfs
+    ```
+29. Changer le user :
+    ```bash
+    su - hduser_
+    ```
+30. Formater HDFS :
+    ```bash
+    $HADOOP_HOME/bin/hdfs namenode -format
     ```
 
-    (Effectuez cette étape une seule fois. Si cette commande est exécutée à nouveau après que Hadoop a été utilisé, elle détruira toutes les données sur le système de fichiers Hadoop. Parfois, cette commande ne fonctionne pas au premier essai. Donc, changez l'utilisateur et changez-le à nouveau en 'root'.)
+    (⚠️ Effectuez cette étape une seule fois. Si cette commande est exécutée à nouveau après que Hadoop a été utilisé, elle détruira toutes les données sur le système de fichiers Hadoop. Parfois, cette commande ne fonctionne pas au premier essai. Donc, changez l'utilisateur et changez-le à nouveau en 'root'. Ou bien executer cette commande : `export PATH=$PATH:/bin/usr/bin`)
 
 Les commandes ci-dessous sont destinées à tester l'installation réussie de Hadoop.
 
