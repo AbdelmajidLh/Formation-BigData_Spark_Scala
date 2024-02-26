@@ -1,8 +1,6 @@
 # instructions to Install Hadoop 3.3.5 in Ubuntu.
 Voici les instructions pour installer Hadoop 3.3.5 sur Ubuntu 22.04.3 - LTS.
 
-[Adapted from : click here](https://gist.github.com/swanandM/2b31a9984cdb58af96ec417197350f32)
-
 1. (Exécuter toutes les commandes en tant qu'utilisateur root)
    ```bash
    sudo apt-get update
@@ -240,32 +238,40 @@ Après avoir copié la ligne dans le fichier, enregistrez et quittez l'éditeur 
 Les commandes ci-dessous sont destinées à tester l'installation réussie de Hadoop.
 
 
-21. Démarrer les services HDFS :
+31. Démarrer les services HDFS :
     ```bash
-    start-dfs.sh
+    $HADOOP_HOME/sbin/start-dfs.sh
     ```
    (Tapez OUI deux fois lorsqu'on vous le demande)
 
-22. Démarrer les services YARN :
+32. Démarrer les services YARN :
     ```bash
-    start-yarn.sh
+   $HADOOP_HOME/sbin/start-dfs.sh
     ```
 
-23. Vérifier que tous les processus Java sont en cours d'exécution :
+33. Vérifier que tous les processus Java sont en cours d'exécution :
     ```bash
     jps
     ```
 
-24. Vérifier les ports utilisés par les processus Java :
+34. [optionnel] Vérifier les ports utilisés par les processus Java :
     ```bash
     netstat -plten | grep java
     ```
 
-25. Arrêter tous les services Hadoop :
+35. Arrêter les services Hadoop :
     ```bash
+    # tous les services : hadoop + yarn
     stop-all.sh
+    
+    # hadoop
+    $HADOOP_HOME/sbin/stop-dfs.sh
+
+    # Yarn
+    $HADOOP_HOME/sbin/stop-yarn.sh
     ```
 
 Liens de référence:
 - [Installation de Hadoop sur Ubuntu 13.10 (DigitalOcean)](https://www.digitalocean.com/community/tutorials/how-to-install-hadoop-on-ubuntu-13-10)
 - [Installation d'Hadoop sur un cluster à nœud unique Ubuntu (bogotobogo)](http://www.bogotobogo.com/Hadoop/BigData_hadoop_Install_on_ubuntu_single_node_cluster.php)
+- [Comment installer Hadoop avec une configuration étape par étape sur Linux Ubuntu]([http://www.bogotobogo.com/Hadoop/BigData_hadoop_Install_on_ubuntu_single_node_cluster.php](https://www.guru99.com/fr/how-to-install-hadoop.html)https://www.guru99.com/fr/how-to-install-hadoop.html)
