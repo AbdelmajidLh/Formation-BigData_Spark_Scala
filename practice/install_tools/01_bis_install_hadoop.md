@@ -253,13 +253,20 @@ Les commandes ci-dessous sont destinées à tester l'installation réussie de Ha
     ```bash
     jps
     ```
+34. Votre première commande hdfs
+    ```bash
+    # Créer votre premier répértoire dans hdfs
+    hdfs dfs -mkdir /data
 
-34. [optionnel] Vérifier les ports utilisés par les processus Java :
+    # afficher le contenu du réprtoire
+    hdfs dfs -ls /data/
+    ```
+35. [optionnel] Vérifier les ports utilisés par les processus Java :
     ```bash
     netstat -plten | grep java
     ```
 
-35. Arrêter les services Hadoop :
+36. Arrêter les services Hadoop :
     ```bash
     # tous les services : hadoop + yarn
     stop-all.sh
