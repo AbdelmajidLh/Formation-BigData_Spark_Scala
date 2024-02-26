@@ -79,9 +79,9 @@ sudo adduser hduser_ sudo
     sudo mkdir -p /tmp/hadoop/datanode
 
     # donner les autorisations à ces repertoires
-    sudo chmod 755 /tmp/hadoop
-    sudo chmod 750 /tmp/hadoop/namenode
-    sudo chmod 750 /tmp/hadoop/datanode
+    sudo chmod 777 /tmp/hadoop
+    sudo chmod 777 /tmp/hadoop/namenode
+    sudo chmod 777 /tmp/hadoop/datanode
     ```
 15. Nettoyage des fichiers temporaires
     ```bash
