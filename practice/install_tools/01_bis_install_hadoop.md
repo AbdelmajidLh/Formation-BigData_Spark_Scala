@@ -1,8 +1,6 @@
 # instructions to Install Hadoop 3.3.5 in Ubuntu.
 Voici les instructions pour installer Hadoop 3.3.5 sur Ubuntu 22.04.3 - LTS.
 
-[Adapté de la source](https://gist.github.com/swanandM/2b31a9984cdb58af96ec417197350f32)
-
 1. (Exécuter toutes les commandes en tant qu'utilisateur root)
    ```bash
    sudo apt-get update
@@ -17,71 +15,81 @@ Voici les instructions pour installer Hadoop 3.3.5 sur Ubuntu 22.04.3 - LTS.
    ```bash
    java -version
    ```
+4. Configuration de l'utilisateur Hadoop
+```bash
+## Ajout d'un utilisateur système Hadoop
+sudo addgroup hadoop_
+sudo adduser --ingroup hadoop_ hduser_
+sudo adduser hduser_ sudo
+   ```
 
-4. Générer une paire de clés SSH sans passphrase :
+5. Générer une paire de clés SSH sans passphrase :
    ```bash
    ssh-keygen -t rsa -P ""
    ```
    (Appuyez sur Entrée après cette étape, ne spécifiez pas de nom de fichier)
 
-5. Autoriser l'accès SSH à la machine locale avec cette clé :
+6. Autoriser l'accès SSH à la machine locale avec cette clé :
    ```bash
    cat $HOME/.ssh/id_rsa.pub >> $HOME/.ssh/authorized_keys
    ```
 
-6. Tester la configuration SSH en se connectant à ocalhost en tant qu'utilisateur 'hduser' :
+7. Passer au user hduser
+   ```bash
+   sudo su - hduser
+   ```
+8. Tester la configuration SSH en se connectant à ocalhost en tant qu'utilisateur 'hduser' :
    ```bash
    ssh localhost
    ```
 
-7. En cas de problème SSH, purger et réinstaller :
+9. ⚠️ En cas de problème SSH, purger et réinstaller ⚠️:
    ```bash
    sudo apt-get purge openssh-server
    sudo apt-get install openssh-server
    ``` 
 
-8. Télécharger Hadoop 3.3.5 :
+10. Télécharger Hadoop 3.3.5 :
    ```bash
    wget https://archive.apache.org/dist/hadoop/common/hadoop-3.3.5/hadoop-3.3.5.tar.gz
    ```
-
-9. Extraire le fichier tar.gz :
+11. Extraire le fichier tar.gz :
    ```bash
    sudo tar -xzf hadoop-3.3.5.tar.gz -C /opt/
    ```
 
-10. Déplacer Hadoop vers le répertoire /usr/local :
+12. Déplacer Hadoop vers le répertoire /etc/hadoop :
    ```bash
-   sudo mdir -p /etc/hadoop/
+   sudo mkdir -p /etc/hadoop/
    sudo cp /opt/hadoop-3.3.5/etc/hadoop/*.xml /etc/hadoop
    ```
 
-11. Configuration des variables d'environnement
+13. Configuration des variables d'environnement
    ```bash
    sudo sh -c 'echo "export HADOOP_HOME=/opt/hadoop-3.3.5" >> /etc/profile'
    sudo sh -c 'echo "export PATH=\$PATH:\$HADOOP_HOME/bin" >> /etc/profile'
    source /etc/profile
    ```
-12. Configuration des dossiers de stockage temporaire pour Hadoop :
+14. Configuration des dossiers de stockage temporaire pour Hadoop :
     ```bash
     # repertoires de stockage temporaire
     sudo mkdir -p /tmp/hadoop/namenode
     sudo mkdir -p /tmp/hadoop/datanode
 
     # donner les autorisations à ces repertoires
-    sudo chmod 755 /tmp/hadoop
-    sudo chmod 750 /tmp/hadoop/namenode
-    sudo chmod 750 /tmp/hadoop/datanode
+    sudo chmod 777 /tmp/hadoop
+    sudo chmod 777 /tmp/hadoop/namenode
+    sudo chmod 777 /tmp/hadoop/datanode
     ```
-13. Nettoyage des fichiers temporaires
+15. Nettoyage des fichiers temporaires
     ```bash
-    sudo rm -f /opt/hadoop-3.3.5.tar.gz
+    sudo rm -f hadoop-3.3.5.tar.gz
     ```
-14.  Modifier le fichier ~/.bashrc
+16.  Modifier le fichier ~/.bashrc
      ```bash
      nano ~/.bashrc
      ```
-15. Ajoute ces lignes à la fin :
+17. Ajoute ces lignes à la fin :
 
     ```bash
     #HADOOP VARIABLES START
@@ -98,42 +106,43 @@ Voici les instructions pour installer Hadoop 3.3.5 sur Ubuntu 22.04.3 - LTS.
     #export HADOOP_OPTS="-Djava.library.path=$HADOOP_INSTALL/lib"
     #HADOOP VARIABLES END
     ```
-16. Appliquer les modifications
+18. Appliquer les modifications
     ```bash
     source ~/.bashrc
     ```
-
-
-========================================
 Une fois que vous avez copié les éléments dans le fichier, vous pouvez enregistrer et quitter l'éditeur nano (généralement en appuyant sur Ctrl + X, puis en répondant "O" pour enregistrer les modifications et en appuyant sur Entrée).
 
-11. Accédez au répertoire où se trouvent les fichiers de configuration Hadoop :
+19. Accédez au répertoire où se trouvent les fichiers de configuration Hadoop :
     ```bash
-    cd /usr/local/hadoop/etc/hadoop
+    cd /opt/hadoop-3.3.5/etc/hadoop
     ```
 
-12. Liste des fichiers dans ce répertoire :
+20. Liste des fichiers dans ce répertoire :
     ```bash
     ls -lt
     ```
 
     Vous verrez de nombreux fichiers ici.
 
-13. Ouvrez le fichier hadoop-env.sh avec l'éditeur de texte nano :
+21. Ouvrez le fichier hadoop-env.sh avec l'éditeur de texte nano :
     ```bash
     nano hadoop-env.sh
     ```
    
-    Copiez et collez la ligne suivante à la fin du fichier ci-dessus et remplacez la ligne rouge par la ligne verte si elles ne sont pas identiques, comme nous l'avons fait précédemment :
+    
     ```bash
+    # Cherche la variable `export JAVA_HOME` et remplace la ligne par :
     export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
+
+    # Cherche la variable `export HADOOP_HOME` et remplace la ligne par :
+    export HADOOP_HOME=/opt/hadoop-3.3.5
     ```
    
 Après avoir copié la ligne dans le fichier, enregistrez et quittez l'éditeur nano.
 
-14. Ouvrir le fichier core-site.xml avec l'éditeur de texte nano :
+22. Ouvrir le fichier core-site.xml avec l'éditeur de texte nano :
     ```bash
-    nano core-site.xml
+    sudo nano core-site.xml
     ```
    
     Entrez les lignes suivantes entre les balises `<configuration></configuration>` :
@@ -144,7 +153,8 @@ Après avoir copié la ligne dans le fichier, enregistrez et quittez l'éditeur 
       <description>A base for other temporary directories.</description>
     </property>
     <property>
-      <name>fs.default.name</name>
+      <!--<name>fs.default.name</name>-->
+      <name>fs.defaultFS</name
       <value>hdfs://localhost:54310</value>
       <description>The name of the default file system. A URI whose
       scheme and authority determine the FileSystem implementation. The
@@ -153,21 +163,48 @@ Après avoir copié la ligne dans le fichier, enregistrez et quittez l'éditeur 
       determine the host, port, etc. for a filesystem.</description>
     </property>
     ```
-
-15. Copiez le fichier mapred-site.xml.template dans mapred-site.xml [optionel] :
+23. Créer le dossier mentionné dans le core-site.txt et lui accorder les autorisations
     ```bash
-    cp /usr/local/hadoop/etc/hadoop/mapred-site.xml.template /usr/local/hadoop/etc/hadoop/mapred-site.xml
+    sudo mkdir -p /app/hadoop/tmp
+    sudo chown -R hduser_:Hadoop_ /app/hadoop/tmp
+    sudo chmod 750 /app/hadoop/tmp
     ```
-
-16. Ouvrez le fichier mapred-site.xml avec l'éditeur de texte nano :
+24. Ouvrir le fichier `yarn-site.xml` avec l'éditeur de texte at ajoute ces lignes  :
+    ```xml
+    <configuration>
+      <property>
+         <name>yarn.nodemanager.aux-services</name>
+         <value>mapreduce_shuffle</value>
+      </property>
+      <property>
+         <name>yarn.nodemanager.aux-services.mapreduce.shuffle.class</name>
+         <value>org.apache.hadoop.mapred.ShuffleHandler</value>
+      </property>
+      <property>
+         <name>yarn.resourcemanager.hostname</name>
+         <value>127.0.0.1</value>
+      </property>
+      <property>
+         <name>yarn.acl.enable</name>
+         <value>0</value>
+      </property>
+      <property>
+         <name>yarn.nodemanager.env-whitelist</name>
+         <value>JAVA_HOME,HADOOP_COMMON_HOME,HADOOP_HDFS_HOME,HADOOP_CONF_DIR,CLASSPATH_PERPEND_DISTCACHE,HADOOP_YARN_HOME,HADOOP_MAPRED_HOME</value>
+      </property>
+   </configuration>
+    ```
+25. Quitter le terminal et réouvrir (en mode root)
+26. Ouvrez le fichier mapred-site.xml avec l'éditeur de texte nano :
     ```bash
-    nano mapred-site.xml
+    cd ${HADOOP_HOME}/etc/hadoop
+    sudo nano mapred-site.xml
     ```
    
     Entrez les lignes suivantes entre les balises `<configuration></configuration>` :
     ```xml
     <property>
-      <name>mapred.job.tracker</name>
+      <name>mapreduce.job.tracker.address</name>
       <value>localhost:54311</value>
       <description>The host and port that the MapReduce job tracker runs
       at. If "local", then jobs are run in-process as a single map
@@ -176,20 +213,9 @@ Après avoir copié la ligne dans le fichier, enregistrez et quittez l'éditeur 
     </property>
     ```
    
-    (J'espère que vous êtes toujours dans le répertoire /usr/local/hadoop/etc/hadoop)
+    (J'espère que vous êtes toujours dans le répertoire /opt/hadoop-3.3.5/etc/hadoop)
 
-17. Créez le répertoire pour le namenode HDFS :
-    ```bash
-    sudo mkdir -p /usr/local/hadoop_store/hdfs/namenode
-    ```
-
-18. Créez le répertoire pour le datanode HDFS :
-    ```bash
-    sudo mkdir -p /usr/local/hadoop_store/hdfs/datanode
-    ```
-Voici les étapes supplémentaires ajoutées à votre document Markdown :
-
-19. Ouvrir le fichier hdfs-site.xml avec l'éditeur de texte nano :
+27. Ouvrir le fichier hdfs-site.xml avec l'éditeur de texte nano :
     ```bash
     nano hdfs-site.xml
     ```
@@ -204,52 +230,78 @@ Voici les étapes supplémentaires ajoutées à votre document Markdown :
       The default is used if replication is not specified in create time.
       </description>
     </property>
-    <property>
+    <!--<property>
       <name>dfs.namenode.name.dir</name>
       <value>file:/usr/local/hadoop_store/hdfs/namenode</value>
-    </property>
+    </property>-->
     <property>
       <name>dfs.datanode.data.dir</name>
-      <value>file:/usr/local/hadoop_store/hdfs/datanode</value>
+      <value>/home/hduser_/hdfs</value>
     </property>
     ```
-
-20. Formater le namenode HDFS :
+28. Créez le répertoire spécifié dans le paramètre ci-dessus et lui donner les autorisations
     ```bash
-    hdfs namenode -format
+    sudo mkdir -p /home/hduser_/hdfs
+    sudo chown -R hduser_:hadoop_ /home/hduser_/hdfs
+    sudo chmod 750 /home/hduser_/hdfs
+    ```
+29. Changer le user :
+    ```bash
+    su - hduser_
+    ```
+30. Formater HDFS :
+    ```bash
+    $HADOOP_HOME/bin/hdfs namenode -format
     ```
 
-    (Effectuez cette étape une seule fois. Si cette commande est exécutée à nouveau après que Hadoop a été utilisé, elle détruira toutes les données sur le système de fichiers Hadoop. Parfois, cette commande ne fonctionne pas au premier essai. Donc, changez l'utilisateur et changez-le à nouveau en 'root'.)
+    (⚠️ Effectuez cette étape une seule fois. Si cette commande est exécutée à nouveau après que Hadoop a été utilisé, elle détruira toutes les données sur le système de fichiers Hadoop. Parfois, cette commande ne fonctionne pas au premier essai. Donc, changez l'utilisateur et changez-le à nouveau en 'root'. Ou bien executer cette commande : `export PATH=$PATH:/bin/usr/bin`)
 
 Les commandes ci-dessous sont destinées à tester l'installation réussie de Hadoop.
 
 
-21. Démarrer les services HDFS :
+31. Démarrer les services HDFS :
     ```bash
-    start-dfs.sh
+    $HADOOP_HOME/sbin/start-dfs.sh
     ```
    (Tapez OUI deux fois lorsqu'on vous le demande)
 
-22. Démarrer les services YARN :
+32. Démarrer les services YARN :
     ```bash
-    start-yarn.sh
+   $HADOOP_HOME/sbin/start-dfs.sh
     ```
 
-23. Vérifier que tous les processus Java sont en cours d'exécution :
+33. Vérifier que tous les processus Java sont en cours d'exécution :
     ```bash
     jps
     ```
-
-24. Vérifier les ports utilisés par les processus Java :
+34. Votre première commande hdfs
     ```bash
-    netstat -plten | grep java
+    # Créer votre premier répértoire dans hdfs
+    hdfs dfs -mkdir /data
+
+    # afficher le contenu du réprtoire
+    hdfs dfs -ls /data/
+    ```
+35. Controle via votre navigateur
+    ```bash
+    # Le NameNode est accessible à localhost:9870
+    # Le DataNode est accessible à localhost:9864
+    # YARN est accessible à localhost:8088
     ```
 
-25. Arrêter tous les services Hadoop :
+36. Arrêter les services Hadoop :
     ```bash
+    # tous les services : hadoop + yarn
     stop-all.sh
+    
+    # hadoop
+    $HADOOP_HOME/sbin/stop-dfs.sh
+
+    # Yarn
+    $HADOOP_HOME/sbin/stop-yarn.sh
     ```
 
 Liens de référence:
 - [Installation de Hadoop sur Ubuntu 13.10 (DigitalOcean)](https://www.digitalocean.com/community/tutorials/how-to-install-hadoop-on-ubuntu-13-10)
 - [Installation d'Hadoop sur un cluster à nœud unique Ubuntu (bogotobogo)](http://www.bogotobogo.com/Hadoop/BigData_hadoop_Install_on_ubuntu_single_node_cluster.php)
+- [Comment installer Hadoop avec une configuration étape par étape sur Linux Ubuntu](https://www.guru99.com/fr/how-to-install-hadoop.html)
