@@ -1,2 +1,5 @@
 Session*/*.ppt filter=crypt diff=crypt merge=crypt
-Session*/*.md filter=crypt diff=crypt merge=crypt
+Session_1/02_*.md filter=crypt diff=crypt merge=crypt
+Session_1/03_*.md filter=crypt diff=crypt merge=crypt
+Session_2/*.md filter=crypt diff=crypt merge=crypt
+Session_3/*.md filter=crypt diff=crypt merge=crypt
