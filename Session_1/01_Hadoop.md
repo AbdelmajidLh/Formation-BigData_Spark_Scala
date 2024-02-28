@@ -61,10 +61,32 @@ hdfs dfs -ls /
 # supprimer le dossier test
 hdfs dfs -rm -r test/
 ```
+### Télécharger un fichier sur linux [commande shell et pas HDFS]
+Cette commande vous permet de télécharger un fichier csv qu'on va utiliser dans notre workshop. C'est une commande purement `shell` et le fichier sera déposé sur votre machine en local (**Il faut lancer la commande sur un deuxième terminal à partir du dossier principal [Formation_BigData_Spark_Scala]**).
 
-### Copier un fichier local dans HDFS
 ```bash
-hdfs dfs -copyFromLocal /chemin/vers/le/fichier /destination/dans/hdfs
+
+# Définir le répertoire de destination
+destination_dir="Session_1/files"
+
+# Créer le répertoire s'il n'existe pas
+mkdir -p "$destination_dir"
+
+# Télécharger le fichier CSV
+wget -O "$destination_dir/zipcodes.csv" "https://raw.githubusercontent.com/vega/vega-datasets/master/data/zipcodes.csv"
+
+# Vérifier si le téléchargement a réussi
+if [ $? -eq 0 ]; then
+    echo "Le fichier a été téléchargé avec succès dans $destination_dir."
+else
+    echo "Une erreur s'est produite lors du téléchargement du fichier."
+fi
+
+```
+### Copier un fichier local dans HDFS
+On va compier le fichier `zipcodes.csv` dans HDFS (dosier data). **Asurez vous d'être dans le dossier principal et avec le user hduser_**
+```bash
+hdfs dfs -copyFromLocal /Session_1/files/zipcodes.csv /data
 ```
 
 ### Afficher le contenu d'un répertoire HDFS
