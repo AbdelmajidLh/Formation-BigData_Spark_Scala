@@ -267,12 +267,16 @@ Les commandes ci-dessous sont destinées à tester l'installation réussie de Ha
 
 32. Démarrer les services YARN :
     ```bash
-   $HADOOP_HOME/sbin/start-dfs.sh
+   $HADOOP_HOME/sbin/start-yarn.sh
     ```
 
 33. Vérifier que tous les processus Java sont en cours d'exécution :
     ```bash
+    # commande jps
     jps
+
+    # s'il manque un service, aller voir dans les logs
+    ls -lt /opt/hadoop-3.3.5/logs/*.log
     ```
 34. Votre première commande hdfs
     ```bash
