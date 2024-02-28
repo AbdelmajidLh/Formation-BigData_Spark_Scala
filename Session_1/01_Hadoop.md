@@ -1,38 +1,84 @@
-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
+# Guide des Commandes Hadoop
+
+## Démarrage d'un Cluster HDFS et YARN
+
+### Démarrage du service HDFS
+```bash
+# aller sur le compte dhuser_
+su - hduser_
+
+# aller dans le dossier sbin/
+cd $HADOOP_HOME/sbin
+
+# démarrer le cluster hadoop
+./start-dfs.sh
+
+```
+
+### Démarrage du service YARN
+```bash
+./start-yarn.sh
+```
+### Vérifier le status des services 
+    ```bash
+    jps
+    ```
+### Obtenir les liens Web 
+    ```bash
+    # lien ressource manager - Yarn
+    hdfs getconf -confKey yarn.resourcemanager.webapp.address
+
+    # lien nemenode HDFS
+    hdfs getconf -confkey dfs.namenode.http-address
+
+    # datanodes sur le port 50075 (http://datanode1.example.com:50075)
+    hdfs dfsadmin -report | grep "Name: DataNode" | awk '{print $2}'
+    ```
+
+## Commandes de Gestion du HDFS
+
+### Afficher les informations de l'espace de stockage HDFS
+```bash
+hdfs dfsadmin -report
+```
+
+### Créer un répertoire dans HDFS
+```bash
+hdfs dfs -mkdir /chemin/vers/le/repertoire
+```
+
+### Copier un fichier local dans HDFS
+```bash
+hdfs dfs -copyFromLocal /chemin/vers/le/fichier /destination/dans/hdfs
+```
+
+### Afficher le contenu d'un répertoire HDFS
+```bash
+hdfs dfs -ls /chemin/vers/le/repertoire
+```
+
+## Commandes de Gestion de YARN
+
+### Afficher les informations sur les ressources du cluster YARN
+```bash
+yarn node -list
+```
+
+### Afficher les applications en cours d'exécution sur YARN
+```bash
+yarn application -list
+```
+
+### Arrêter le service HDFS
+```bash
+stop-dfs.sh
+```
+
+### Arrêter le service YARN
+```bash
+stop-yarn.sh
+```
+
+```
+
+N'oubliez pas de remplacer `/chemin/vers/le/repertoire` et `/chemin/vers/le/fichier` par les chemins réels de votre système de fichiers HDFS. Vous pouvez également ajouter des descriptions supplémentaires ou des explications pour chaque commande si nécessaire.
