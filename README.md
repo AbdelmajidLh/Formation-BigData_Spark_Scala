@@ -34,9 +34,4 @@ Certains fichiers sont cryptés pour des raisons de sécurité. Pour décrypter 
 1. Installez ou cloner l'outil Transcrypt en suivant les instructions dans ce [lien]([lien_vers_instructions_transcrypt](https://github.com/elasticdog/transcrypt)).
 
 2. Utilisez le mot de passe fourni pour décrypter les fichiers.
-[lien_vers_diapositives_jour_1] : https://github.com/AbdelmajidLh/Formation-BigData_Spark_Scala/blob/main/Session_1/Slides.ppt
-[lien_vers_diapositives_jour_2] : https://github.com/AbdelmajidLh/Formation-BigData_Spark_Scala/tree/main/Session_2
-[lien_vers_diapositives_jour_3] : https://github.com/AbdelmajidLh/Formation-BigData_Spark_Scala/tree/main/Session_3
-
-[lien_vers_instructions_transcrypt] : https://github.com/elasticdog/transcrypt
 
