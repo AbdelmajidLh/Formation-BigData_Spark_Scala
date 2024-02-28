@@ -68,6 +68,8 @@ hdfs dfs -rm -r test/
 Cette commande vous permet de télécharger un fichier csv qu'on va utiliser dans notre workshop. C'est une commande purement `shell` et le fichier sera déposé sur votre machine en local.
 
 ```bash
+# lancer cette commande pour aller dans le dossier racine/
+cd
 
 # Définir le répertoire de destination
 destination_dir="dossier_local"
