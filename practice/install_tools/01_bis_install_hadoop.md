@@ -278,6 +278,7 @@ Les commandes ci-dessous sont destinées à tester l'installation réussie de Ha
     # s'il manque un service, aller voir dans les logs
     ls -lt /opt/hadoop-3.3.5/logs/*.log
     ```
+    
 34. Votre première commande hdfs
     ```bash
     # Créer votre premier répértoire dans hdfs
