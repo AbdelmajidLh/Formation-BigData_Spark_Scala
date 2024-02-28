@@ -13,6 +13,9 @@ cd $HADOOP_HOME/sbin
 # démarrer le cluster hadoop
 ./start-dfs.sh
 
+# [optionel] demarrer le datanode seul
+hdfs --daemon start datanode
+
 ```
 
 ### Démarrage du service YARN
@@ -84,9 +87,9 @@ fi
 
 ```
 ### Copier un fichier local dans HDFS
-On va compier le fichier `zipcodes.csv` dans HDFS (dosier data). **Asurez vous d'être dans le dossier principal et avec le user hduser_**
+On va compier le fichier `zipcodes.csv` dans HDFS (dosier data). **Asurez vous d'être dans le dossier principal et avec le user hduser_: /home/hduser_**
 ```bash
-hdfs dfs -copyFromLocal /Session_1/files/zipcodes.csv /data
+hdfs dfs -put dossier_local/zipcodes.csv /data
 ```
 
 ### Afficher le contenu d'un répertoire HDFS
