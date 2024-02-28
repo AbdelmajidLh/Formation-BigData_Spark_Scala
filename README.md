@@ -37,8 +37,9 @@ Certains fichiers sont cryptés pour des raisons de sécurité. Pour décrypter 
 
 [linkedin]: https://www.linkedin.com/in/aelhou/
 [website]: https://abdelmajidlh.github.io/ePortfolio/
-[lien_vers_diapositives_jour_1](https://github.com/AbdelmajidLh/Formation-BigData_Spark_Scala/blob/main/Session_1/Slides.ppt)
-[lien_vers_diapositives_jour_2](https://github.com/AbdelmajidLh/Formation-BigData_Spark_Scala/tree/main/Session_2)
-[lien_vers_diapositives_jour_3](https://github.com/AbdelmajidLh/Formation-BigData_Spark_Scala/tree/main/Session_3)
+[lien_vers_diapositives_jour_1] : https://github.com/AbdelmajidLh/Formation-BigData_Spark_Scala/blob/main/Session_1/Slides.ppt
+[lien_vers_diapositives_jour_2] : https://github.com/AbdelmajidLh/Formation-BigData_Spark_Scala/tree/main/Session_2
+[lien_vers_diapositives_jour_3] : https://github.com/AbdelmajidLh/Formation-BigData_Spark_Scala/tree/main/Session_3
 
-[lien_vers_instructions_transcrypt](https://github.com/elasticdog/transcrypt)
+[lien_vers_instructions_transcrypt] : https://github.com/elasticdog/transcrypt
+
