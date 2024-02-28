@@ -44,7 +44,22 @@ hdfs dfsadmin -report
 
 ### Créer un répertoire dans HDFS
 ```bash
-hdfs dfs -mkdir /chemin/vers/le/repertoire
+# exemple data/ et test/
+## Pour la premiere fois il faut utiliser l'option `-p`
+hdfs dfs -mkdir -p data
+hdfs dfs -mkdir -p test
+```
+
+### Afficher les dossiers créés dans HDFS
+```bash
+# tous les dossiers à la racine
+hdfs dfs -ls /
+```
+
+### Supprimer un dossier et son contenu dans HDFS
+```bash
+# supprimer le dossier test
+hdfs dfs -rm -r test/
 ```
 
 ### Copier un fichier local dans HDFS
