@@ -62,12 +62,12 @@ hdfs dfs -ls /
 hdfs dfs -rm -r test/
 ```
 ### Télécharger un fichier sur linux [commande shell et pas HDFS]
-Cette commande vous permet de télécharger un fichier csv qu'on va utiliser dans notre workshop. C'est une commande purement `shell` et le fichier sera déposé sur votre machine en local (**Il faut lancer la commande sur un deuxième terminal à partir du dossier principal [Formation_BigData_Spark_Scala]**).
+Cette commande vous permet de télécharger un fichier csv qu'on va utiliser dans notre workshop. C'est une commande purement `shell` et le fichier sera déposé sur votre machine en local.
 
 ```bash
 
 # Définir le répertoire de destination
-destination_dir="Session_1/files"
+destination_dir="dossier_local"
 
 # Créer le répertoire s'il n'existe pas
 mkdir -p "$destination_dir"
