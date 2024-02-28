@@ -11,7 +11,7 @@ La formation est divisée en trois sessions, une pour chaque jour :
 
 1. **Session_1 : Introduction à Hadoop et HDFS**
    - Diapositives pour la session théorique : [lien_vers_diapositives_jour_1](https://github.com/AbdelmajidLh/Formation-BigData_Spark_Scala/blob/main/Session_1/Slides.ppt)
-   - Commandes pratiques pour HDFS : [lien_vers_instructions_pratiques_jour_1]
+   - Commandes pratiques pour HDFS
    - MapReduce
    - Hive
 
