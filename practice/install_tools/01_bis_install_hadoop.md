@@ -232,14 +232,14 @@ Après avoir copié la ligne dans le fichier, enregistrez et quittez l'éditeur 
     </property>
     <!--<property>
       <name>dfs.namenode.name.dir</name>
-      <value>file:/usr/local/hadoop_store/hdfs/namenode</value>
+      <value>/tmp/hadoop/namenode</value>
     </property>-->
     <property>
       <name>dfs.datanode.data.dir</name>
-      <value>/home/hduser_/hdfs</value>
+      <value>/tmp/hadoop/datanode</value>
     </property>
     ```
-28. Créez le répertoire spécifié dans le paramètre ci-dessus et lui donner les autorisations
+28. Créez le répertoire spécifié dans le paramètre ci-dessus et lui donner les autorisations [to remove]
     ```bash
     sudo mkdir -p /home/hduser_/hdfs
     sudo chown -R hduser_:hadoop_ /home/hduser_/hdfs
