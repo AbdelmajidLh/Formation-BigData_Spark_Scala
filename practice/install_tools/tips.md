@@ -1,6 +1,11 @@
 # Tips et commandes utiles machine linux
 
 ## Linux Tips
+Afficher la verion de votre machine linux
+```bash
+cat /etc/os-release
+```
+
 Afficher la liste des utilisateurs sur votre machine
 ```bash
 cut -d: -f1 /etc/passwd
